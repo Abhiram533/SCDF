@@ -22,6 +22,17 @@ public class ProducerApplication {
 	public CommandLineRunner commandLineRunner() {
 		return new HelloWorldCommandLineRunner();
 	}
+	@Bean
+	@Primary
+	@ConfigurationProperties("spring.datasource")
+	public DataSourceProperties memberDataSourceProperties() {
+	    return new DataSourceProperties();
+	}
+	@Bean
+	@ConfigurationProperties(prefix="spring.mysql")
+	public javax.sql.DataSource secondaryDataSource() {
+	    return DataSourceBuilder.create().build();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProducerApplication.class, args);
