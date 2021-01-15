@@ -24,7 +24,7 @@ public class ProducerApplication {
 	}
 	@Bean
 	@Primary
-	@ConfigurationProperties("spring.datasource")
+	@ConfigurationProperties(prefix="spring.datasource")
 	public DataSourceProperties memberDataSourceProperties() {
 	    return new DataSourceProperties();
 	}
